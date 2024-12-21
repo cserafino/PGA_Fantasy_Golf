@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PGA Fantasy Golf - Team Roster</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #1a5f7a;
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .roster-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .player-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .player-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .player-info {
+            margin-top: 10px;
+        }
+
+        .player-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .player-stats {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>PGA Fantasy Golf</h1>
+        <h2>Team Roster</h2>
+    </div>
+
+    <div class="roster-container" id="rosterContainer">
+        <!-- Player cards will be dynamically inserted here -->
+    </div>
+
+    <script>
+        // Sample player data - Replace with your actual data from Firebase
+        const players = [
+            {
+                name: "Tiger Woods",
+                rank: "World Rank: #1",
+                stats: "Avg Score: 70.2",
+                image: "https://via.placeholder.com/200x200?text=Tiger+Woods"
+            },
+            {
+                name: "Rory McIlroy",
+                rank: "World Rank: #2",
+                stats: "Avg Score: 69.8",
+                image: "https://via.placeholder.com/200x200?text=Rory+McIlroy"
+            },
+            // Add more players as needed
+        ];
+
+        // Function to create player cards
+        function createPlayerCards() {
+            const container = document.getElementById('rosterContainer');
+            
+            players.forEach(player => {
+                const card = document.createElement('div');
+                card.className = 'player-card';
+                card.innerHTML = `
+                    <img src="${player.image}" alt="${player.name}">
+                    <div class="player-info">
+                        <div class="player-name">${player.name}</div>
+                        <div class="player-stats">
+                            ${player.rank}<br>
+                            ${player.stats}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Initialize the page
+        createPlayerCards();
+    </script>
+</body>
+</html>
